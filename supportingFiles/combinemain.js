@@ -9,7 +9,8 @@ var circle2;
 var circle3;
 var cars;
 var circle4;
-
+var counterbank1=0;
+var counterbank2=0;
 
 function preload() {
     //  You can fill the preloader with as many assets as your game requires
@@ -35,7 +36,7 @@ function preload() {
 }
 
 function create() {
-    game.stage.backgroundColor = '#FF8000';
+    game.stage.backgroundColor = '#FFB266';
     // background1 = game.add.tileSprite(0, 0,800,600, 'bg');
     
     //  Make our game world 2000x2000 pixels in size (the default is to match the game size)
@@ -92,9 +93,7 @@ function create() {
     game.physics.enable(circle4,Phaser.Physics.ARCADE);
 
     cursors = game.input.keyboard.createCursorKeys();
-
     
-
 }
 
 function update() {
@@ -121,32 +120,35 @@ function update() {
         }
     }
 
-    // if (cursors.up.isDown)
-    // {
-    //     cars.body.velocity.x = 260;
-    //     // game.camera.x += 4;
-    // }
+    if (player.position.x > 2800 && counterbank1==0)
+    {
+        var a = httpGet('https://musynco.herokuapp.com/song'); 
+        // alert(a); 
+        counterbank1++;
+    }
 
 
 
+    if (player.position.x > 3400 && counterbank2==0)
+    {
+        var a = httpGet('https://musynco.herokuapp.com/song_d'); 
+        // alert(a); 
+        counterbank2++;
+    }
 
-    // if (player.position.x > 3700 && counterforex==0)
-    // {
-    //     forexthought = game.add.sprite(3700,400, 'forexthought');
-    //     counterforex++;
-    // }
 
-    // if (player.position.x > 3850 && counterforex==1)
-    // {
-    //     forexthought.kill(true);
-    //     counterforex++;
-    // }
 
 
 }
 
 
-
+function httpGet(theUrl) 
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    // return xmlHttp.responseText;
+}
 
 
 
