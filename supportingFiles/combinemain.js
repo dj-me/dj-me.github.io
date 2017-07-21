@@ -9,8 +9,8 @@ var circle2;
 var circle3;
 var cars;
 var circle4;
-var counterbank1=0;
-var counterbank2=0;
+var counterbank1 = 0;
+var counterbank2 = 0;
 
 function preload() {
     //  You can fill the preloader with as many assets as your game requires
